@@ -241,6 +241,7 @@ function reveal(r, c) {
     forEachNeighbor(r, c, (nr, nc) => reveal(nr, nc));
   }
 
+  renderBoard();
   checkWin();
 }
 
@@ -297,7 +298,7 @@ function onClick(r, c) {
 
 function onRightClick(e, r, c) {
   e.preventDefault();
-  if (gameOver || !gameStarted || board[r][c].revealed) return;
+  if (gameOver || board[r][c].revealed) return;
 
   board[r][c].flagged = !board[r][c].flagged;
   flagsPlaced += board[r][c].flagged ? 1 : -1;
